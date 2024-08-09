@@ -1,16 +1,14 @@
 package com.example.ejercicio007.controller;
 
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MyController {
+public class LoginController {
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello, authenticated user!";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 }
-
 

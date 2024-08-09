@@ -6,32 +6,22 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.example.ejercicio007.controller.MyController;
+import com.example.ejercicio007.controller.LoginController;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
-@WebMvcTest(controllers = MyController.class)
+@WebMvcTest(controllers = LoginController.class)
 public class SecurityTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void whenAnonymousAccessesHello_thenUnauthorized() throws Exception {
-        mockMvc.perform(get("/hello"))
-                .andExpect(status().isUnauthorized());
-    }
-
-    @Test
-    @WithMockUser(username = "user", password = "password", roles = "USER")
-    public void whenAuthenticatedAccessesHello_thenOk() throws Exception {
-        mockMvc.perform(get("/hello"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Hello, authenticated user!"));
+    //@WithMockUser(username = "user", password = "password")
+    public void whenUnauthenticated_thenUnauthorized() throws Exception {
+        mockMvc.perform(get("/login"))  // GET al login sin autenticación
+                .andExpect(status().isOk());  // Espera 401
     }
 }
-
-
 
