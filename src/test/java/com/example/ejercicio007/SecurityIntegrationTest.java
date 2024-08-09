@@ -2,18 +2,18 @@ package com.example.ejercicio007;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-
-import com.example.ejercicio007.controller.MyController;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
-@WebMvcTest(controllers = MyController.class)
-public class SecurityTest {
+@SpringBootTest
+@AutoConfigureMockMvc
+public class SecurityIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -32,6 +32,3 @@ public class SecurityTest {
                 .andExpect(content().string("Hello, authenticated user!"));
     }
 }
-
-
-

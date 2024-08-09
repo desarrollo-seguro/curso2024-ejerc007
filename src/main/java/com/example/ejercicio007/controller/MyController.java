@@ -1,19 +1,16 @@
 package com.example.ejercicio007.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class MyController {
 
-    @GetMapping("/login")
-    public String login() {
-        return "login"; // nombre del archivo de la vista de inicio de sesión
-    }
-
-    @GetMapping("/home")
-    public String home() {
-        return "home"; // nombre del archivo de la vista de la página de inicio
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello, authenticated user!";
     }
 }
+
 
