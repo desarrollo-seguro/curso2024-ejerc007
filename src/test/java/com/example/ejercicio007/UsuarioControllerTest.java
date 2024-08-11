@@ -25,7 +25,7 @@ public class UsuarioControllerTest {
     private UsuarioService usuarioService;
 
     @Test
-    //@WithMockUser(username = "Nombre", roles = {"ADMIN"})
+    @WithMockUser(username = "Nombre", roles = {"ADMIN"})
     public void testGetUsuarioById_Authorized() throws Exception {
         Long UsuarioId = 1L;
         Usuario usuario = new Usuario();

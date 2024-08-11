@@ -20,8 +20,8 @@ public class SecurityTest {
     @Test
     @WithMockUser(username = "user", password = "password")
     public void whenUnauthenticated_thenUnauthorized() throws Exception {
-        mockMvc.perform(get("/login"))  // GET al login sin autenticación
-                .andExpect(status().isOk());  // Espera 401
+        mockMvc.perform(get("/login"))
+                .andExpect(status().isOk());  // Ahora devuelve 200
     }
 }
 
