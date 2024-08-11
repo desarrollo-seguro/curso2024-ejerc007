@@ -18,7 +18,7 @@ public class SecurityTest {
     private MockMvc mockMvc;
 
     @Test
-    //@WithMockUser(username = "user", password = "password")
+    @WithMockUser(username = "user", password = "password")
     public void whenUnauthenticated_thenUnauthorized() throws Exception {
         mockMvc.perform(get("/login"))  // GET al login sin autenticación
                 .andExpect(status().isOk());  // Espera 401
