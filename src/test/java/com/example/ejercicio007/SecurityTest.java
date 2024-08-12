@@ -19,9 +19,15 @@ public class SecurityTest {
 
     @Test
     @WithMockUser(username = "user", password = "password")
-    public void whenUnauthenticated_thenUnauthorized() throws Exception {
+    public void whenUnauthenticated_thenAuthorized() throws Exception {
         mockMvc.perform(get("/login"))
                 .andExpect(status().isOk());  // Ahora devuelve 200
+    }
+
+    @Test
+    public void whenUnauthenticated_thenUnauthorized() throws Exception {
+        mockMvc.perform(get("/login"))
+                .andExpect(status().isUnauthorized());  // Ahora devuelve 401
     }
 }
 
